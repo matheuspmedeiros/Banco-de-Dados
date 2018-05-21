@@ -1,4 +1,4 @@
-Script realizado na Tecnologia SQL pelo aluno Matheus Medeiros da instituição Etec da Zona Leste.
+Scripts realizados na Tecnologia SQL pelo aluno Matheus Medeiros da instituição Etec da Zona Leste.
 
 Repositorio para consulta e estudo do nivel Tecnico
 
