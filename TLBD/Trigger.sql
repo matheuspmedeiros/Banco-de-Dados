@@ -21,28 +21,47 @@ on professores
 after insert 
 as 
 
-		begin if (exists(select nome from professores
-					group by nome
+
+		begin if (exists(select matricula from professores
+					group by matricula
 					having count (*)>1))
 				begin 
-					RAISERROR ('nome Ja Existe!',15,0)
+					RAISERROR ('matricula não pode ser igual!',15,0)
 					rollback
 				end 
 			end 
 			
 go
 
-
- 
-
-
-insert into professores values ('Darlinhos','696')
-							
-
-GO
-create procedure consulta 
+create trigger contarid
+on professores
+after insert 
 as 
+	
 
-select * from professores
+				
+			if (LEN((SELECT matricula from inserted))>3)
+			BEGIN
+			RAISERROR ('matricula deve haver apenas 3 digitos',15,0)
+			rollback
+			end
+go			
 
-CONSULTA
+create trigger contarnome
+on professores
+after insert 
+as 
+	
+
+				
+			if (LEN((SELECT nome from inserted))>8)
+			BEGIN
+			RAISERROR ('o Nome deve haver menos que 8 digitos',15,0)
+			rollback
+			end
+go			
+
+				
+
+
+
